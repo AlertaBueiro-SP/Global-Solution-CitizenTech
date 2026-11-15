@@ -11,7 +11,8 @@
 
 <body>
     <header>
-        <a class="marca" href="#problema"></span> AlertaBueiro <strong>SP</strong></a>
+        <a class="marca" href="#monitoramento"></span> AlertaBueiro <strong>SP</strong></a>
+
         <nav aria-label="Seções">
             <a href='#problema'>Problema</a> 
             <a href="#tecnologias">Tecnologias</a>
@@ -19,9 +20,46 @@
             <a href="#publico">Público-alvo</a>
             <a href="#beneficios">Benefícios</a>
         </nav>
+         <a class="botao-mapa" href="#monitoramento">Ver mapa ↗</a>
     </header>
 
     <main id="conteudo">
+           <!-- Mapa local esquemático -->
+        <div class="introducao">
+            <div>
+                <span class="sobretitulo">DRENAGEM URBANA</span>
+                <h1>Bocas de lobo em São Paulo<br>
+                <p>Explore 12 bocas de lobo fictícias e simule diferentes níveis de água.</p>
+            </div>
+            <div class="hero-nota">
+                <span class="selo">Ambiente de simulação</span>
+            </div>
+        </div>
+        <!-- Contadores derivados dos mesmos dados exibidos no mapa -->
+        <div id="monitoramento" class="dashboard">
+            <div class="mapa-coluna">
+                <!-- Território ilustrativo de 500 x 350 metros -->
+                <div id="mapa" class="mapa" aria-label="Mapa fictício de Pinheiros com doze bocas de lobo simuladas">
+                    <div id="areas-atencao" class="camada-areas" aria-hidden="true">
+                    </div>
+                    <div id="pontos-mapa" class="camada-pontos">
+                    </div>
+                    <span class="mapa-nota">Apenas experimental. Sem precisão geográfica</span>
+                </div>
+                <div class="mapa-rodape">
+                </div>
+            </div>
+        </div>
+
+        <div class="resumo">
+            <div>
+                <span class="icone">≋</span>
+                <div>
+                    <strong>Você controla o cenário</strong>
+                    <span>Altere água e chuva e observe o estado.</span>
+                </div>
+            </div>
+        </div>
 
         <section id="problema" aria-labelledby="titulo-problema">
             <h2 id="titulo-problema">Problema</h2>
