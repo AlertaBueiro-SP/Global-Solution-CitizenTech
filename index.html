@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <h1>AlertaBueiro SP</h1>
+        <a class="marca" href="#problema"></span> AlertaBueiro <strong>SP</strong></a>
         <nav aria-label="Seções">
             <a href='#problema'>Problema</a> 
             <a href="#tecnologias">Tecnologias</a>
@@ -20,30 +20,42 @@
             <a href="#beneficios">Benefícios</a>
         </nav>
     </header>
-    <main>
-        <section id="problema">
-            <h2>Problema</h2>
-            <p>O problema que estamos abordando é a falta de monitoramento e alerta em tempo real para bueiros em São Paulo, o que pode levar a enchentes e acidentes.</p>
+
+    <main id="conteudo">
+
+        <section id="problema" aria-labelledby="titulo-problema">
+            <h2 id="titulo-problema">Problema</h2>
+            <p>O acúmulo de água nas ruas dificulta deslocamentos e afeta moradores de regiões sujeitas a alagamentos.</p>
+            <p>A proposta explora como medições simuladas podem apresentar mudanças no nível da água de bocas de lobo fictícias.</p>
         </section>
 
-        <section id="tecnologias">
-            <h2>Tecnologias</h2>
-            <p>Estamos utilizando sensores IoT, análise de dados em tempo real e notificações via aplicativo móvel para monitorar o nível de água nos bueiros.</p>
+        <section id="tecnologias" aria-labelledby="titulo-tecnologias">
+            <h2 id="titulo-tecnologias">Tecnologias</h2>    
         </section>
 
-        <section id="objetivos">
-            <h2>Objetivos</h2>
-            <p>Nossos objetivos incluem reduzir o risco de enchentes, melhorar a segurança pública e fornecer informações em tempo real para os cidadãos.</p>
+        <section id="objetivos" aria-labelledby="titulo-objetivos">
+            <h2 id="titulo-objetivos">Objetivos</h2>
+            <p>Monitorar, analisar, antecipar e informar são objetivos do MVP; nesta base, apenas a visualização simulada está implementada.</p>
+            <p>Os estados e limites abaixo são demonstrativos.</p>       
         </section>
 
-        <section id="publico">
-            <h2>Público-alvo</h2>
-            <p>Nosso público-alvo são os cidadãos de São Paulo, autoridades municipais e equipes de emergência que precisam de informações rápidas sobre o estado dos bueiros.</p>
+        <section id="publico" aria-labelledby="titulo-publico">
+            <h2 id="titulo-publico">Público-alvo</h2>
+            <p>Moradores de regiões de São Paulo sujeitos a alagamentos, especialmente pessoas que caminham ou se deslocam nessas áreas.</p>
+            <p>Comerciantes, pedestres e trabalhadores também poderão se beneficiar de informações mais compreensíveis sobre a drenagem local.</p>
         </section>
 
-        <section id="beneficios">
-            <h2>Benefícios</h2>
-            <p>Os benefícios incluem maior segurança, prevenção de acidentes, economia de recursos públicos e melhoria na qualidade de vida dos cidadãos.</p>
+        <section id="beneficios" aria-labelledby="titulo-beneficios">
+            <h2 id="titulo-beneficios">Benefícios</h2>
+            <p>A proposta busca facilitar a compreensão das medições e demonstrar indicadores preventivos.</p>
         </section>
+
+    </main>
+
+    <footer>
+        <p>AlertaBueiro SP - Protótipo de demonstração</p>
+        <a href="#problema">Voltar ao início</a>
+    </footer>
+
 </body>
 </html>
