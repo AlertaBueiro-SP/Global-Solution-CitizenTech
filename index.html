@@ -38,18 +38,103 @@
         <!-- Contadores derivados dos mesmos dados exibidos no mapa -->
         <div id="monitoramento" class="dashboard">
             <div class="mapa-coluna">
-                <!-- Território ilustrativo de 500 x 350 metros -->
+                <div class="mapa-cabecalho">
+                    <div>
+                        <h2>Pinheiros, São Paulo</h2>
+                    </div>
+                    <span class="etiqueta">12 bocas de lobo monitoradas</span>
+                </div>
+                <!-- Território ilustrativo -->
                 <div id="mapa" class="mapa" aria-label="Mapa fictício de Pinheiros com doze bocas de lobo simuladas">
-                    <div id="areas-atencao" class="camada-areas" aria-hidden="true">
+                    <div class="quadras" aria-hidden="true">
+                        <div class="quadra" style="left:24%;top:8%;"></div>
+                        <div class="quadra" style="left:42%;top:8%;"></div>
+                        <div class="quadra" style="left:60%;top:8%;"></div>
+                        <div class="quadra" style="left:78%;top:8%;"></div>
+                        <div class="quadra" style="left:24%;top:28%;"></div>
+                        <div class="quadra" style="left:42%;top:28%;"></div>
+                        <div class="quadra" style="left:60%;top:28%;"></div>
+                        <div class="quadra" style="left:78%;top:28%;"></div>
+                        <div class="quadra" style="left:24%;top:48%;"></div>
+                        <div class="quadra" style="left:42%;top:48%;"></div>
+                        <div class="quadra" style="left:60%;top:48%;"></div>
+                        <div class="quadra" style="left:78%;top:48%;"></div>
+                        <div class="quadra" style="left:24%;top:68%;"></div>
+                        <div class="quadra" style="left:42%;top:68%;"></div>
+                        <div class="quadra" style="left:60%;top:68%;"></div>
+                        <div class="quadra" style="left:78%;top:68%;"></div>
                     </div>
-                    <div id="pontos-mapa" class="camada-pontos">
+                    <div class="rio" aria-hidden="true">
+                        <span>Rio Pinheiros</span>
                     </div>
-                    <span class="mapa-nota">Apenas experimental. Sem precisão geográfica</span>
+                    <div class="parque parque-um" aria-hidden="true">Praça do Limoeiro</div>
+                    <div class="parque parque-dois" aria-hidden="true"></div>
+                    <div class="rua rua-horizontal rua-um" aria-hidden="true">
+                        <span>Rua dos Pinheiros</span>
+                    </div>
+                    <div class="rua rua-horizontal rua-dois" aria-hidden="true">
+                        <span>Rua Augusta</span>
+                    </div>
+                    <div class="rua rua-vertical rua-tres" aria-hidden="true">
+                        <span>Av. Rebouças</span>
+                    </div>
+                    <div class="rua rua-vertical rua-quatro" aria-hidden="true"></div>
+                    <span class="bairro" aria-hidden="true">PINHEIROS</span>
+                    <div id="areas-atencao" class="camada-areas" aria-hidden="true"></div>
+                    <div id="pontos-mapa" class="camada-pontos"></div>
+                    <div class="escala">
+                    </div>
                 </div>
-                <div class="mapa-rodape">
+
+                <div class="legenda-externa">
+                    <span>
+                        <i class="bolinha normal"></i> Normal</span>
+                    <span>
+                        <i class="bolinha atencao"></i> Atenção</span>
+                    <span>
+                        <i class="bolinha critico"></i> Crítico</span>
+                    <span>◯ Vermelho: raio de 30 m indicando perigo nos arredores.</span>
                 </div>
-            </div>
-        </div>
+                </div>
+
+                <aside class="painel-lateral" aria-label="Simulação do ponto selecionado">
+                    <article class="caixa" aria-labelledby="titulo-painel">
+                        <h3 id="titulo-painel">Painel — Boca de lobo BL-01</h3>
+                        <label for="seletor-ponto">Boca de lobo selecionada</label>
+                        <select id="seletor-ponto" aria-label="Selecionar boca de lobo" disabled>
+                            <option>BL-01</option>
+                        </select>
+                        <p id="descricao-ponto" class="descricao-ponto" role="status"></p>
+                        <dl class="linha">
+                            <div>
+                                <dt>Nível da água</dt>
+                                <dd id="valor-agua">20 cm</dd>
+                            </div>
+                            <div>
+                                <dt>Intensidade da chuva</dt>
+                                <dd id="valor-chuva">5 mm/h</dd>
+                            </div>
+                            <div>
+                                <dt>Estado demonstrativo</dt>
+                                <dd id="estado" class="normal" role="status">Normal</dd>
+                            </div>
+                        </dl>
+                        <form id="form-simulacao">
+                            <label for="agua">Nível simulado da água (0 a 100 cm)</label>
+                            <input id="agua" name="agua" type="number" min="0" max="100" step="1" value="20" required disabled>
+                            <label for="chuva">Chuva simulada (0 a 200 mm/h)</label>
+                            <input id="chuva" name="chuva" type="number" min="0" max="200" step="1" value="5" required disabled>
+                            <button type="submit" disabled>Aplicar simulação</button>
+                        </form>
+                        <div class="linha">
+                            <button id="cenario-normal" type="button" disabled>Cenário normal</button>
+                            <button id="cenario-atencao" type="button" disabled>Cenário de atenção</button>
+                            <button id="cenario-critico" type="button" disabled>Cenário crítico</button>
+                        </div>
+                        <small id="limites"></small>
+                    </article>
+                </aside>
+                </div>
 
         <div class="resumo">
             <div>
@@ -63,8 +148,8 @@
 
         <section id="problema" aria-labelledby="titulo-problema">
             <h2 id="titulo-problema">Problema</h2>
-            <p>O acúmulo de água nas ruas dificulta deslocamentos e afeta moradores de regiões sujeitas a alagamentos.</p>
-            <p>A proposta explora como medições simuladas podem apresentar mudanças no nível da água de bocas de lobo fictícias.</p>
+            <p> </p>
+            <p> </p>
         </section>
 
         <section id="tecnologias" aria-labelledby="titulo-tecnologias">
@@ -73,25 +158,25 @@
 
         <section id="objetivos" aria-labelledby="titulo-objetivos">
             <h2 id="titulo-objetivos">Objetivos</h2>
-            <p>Monitorar, analisar, antecipar e informar são objetivos do MVP; nesta base, apenas a visualização simulada está implementada.</p>
-            <p>Os estados e limites abaixo são demonstrativos.</p>       
+            <p> </p>
+            <p> </p>       
         </section>
 
         <section id="publico" aria-labelledby="titulo-publico">
             <h2 id="titulo-publico">Público-alvo</h2>
-            <p>Moradores de regiões de São Paulo sujeitos a alagamentos, especialmente pessoas que caminham ou se deslocam nessas áreas.</p>
-            <p>Comerciantes, pedestres e trabalhadores também poderão se beneficiar de informações mais compreensíveis sobre a drenagem local.</p>
+            <p> </p>
+            <p> </p>
         </section>
 
         <section id="beneficios" aria-labelledby="titulo-beneficios">
             <h2 id="titulo-beneficios">Benefícios</h2>
-            <p>A proposta busca facilitar a compreensão das medições e demonstrar indicadores preventivos.</p>
+            <p> </p>
         </section>
 
     </main>
 
     <footer>
-        <p>AlertaBueiro SP - Protótipo de demonstração</p>
+        <p>AlertaBueiro SP - Protótipo</p>
         <a href="#problema">Voltar ao início</a>
     </footer>
 

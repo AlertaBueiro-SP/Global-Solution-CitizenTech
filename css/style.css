@@ -353,7 +353,6 @@ p {
 }
 
 .parque::before {
-    content: "♣  ♣  ♣";
     display: block;
     color: #91b386;
     letter-spacing: 6px;
