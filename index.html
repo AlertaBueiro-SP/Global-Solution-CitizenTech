@@ -1,118 +1,111 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlertaBueiro SP</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/modelo.js" defer></script>
-    <script src="js/script.js" defer></script>
-    <script src="js/projecao.js" defer></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AlertaBueiro SP</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/modelo.js" defer></script>
+        <script src="js/script.js" defer></script>
+        <script src="js/projecao.js" defer></script>
     </head>
-    
+
     <body>
         <a class="pular" href="#conteudo">Pular para o conteúdo</a>
-        <header>
-</head>
+        <header class="cabecalho">
+            <a class="logo" href="#conteudo">AlertaBueiro <span>SP</span>
+            </a>
+            <nav class="links">
+                <a href="#problema">Problema</a>
+                <a href="#tecnologias">Tecnologias</a>
+                <a href="#objetivos">Objetivos</a>
+                <a href="#publico">Público-alvo</a>
+                <a href="#beneficios">Benefícios</a>
+            </nav>
+            <a class="botao-mapa" href="#mapa">Ver mapa ↗</a>
+        </header>
 
-<body>
-    <header class="cabecalho">
-        <a class="logo">AlertaBueiro <span>SP</span></a>
-    
-        <nav class="links">
-            <a href="#problema">Problema</a>
-            <a href="#tecnologias">Tecnologias</a>
-            <a href="#objetivos">Objetivos</a>
-            <a href="#publico-alvo">Público-alvo</a>
-            <a href="#beneficios">Benefícios</a>
-        </nav>
-    
-        <a class="botao-mapa" href="#mapa">Ver mapa ↗</a>
-    </header>
-
-    <main id="conteudo">
-           <!-- Mapa local esquemático -->
-        <div class="introducao">
-            <div>
-                <h1>Monitoramento de precipitação<br>
-                <p>Explore 12 bocas de lobo fictícias e simule diferentes níveis de água.</p>
+        <main id="conteudo">
+            <!-- Mapa local esquemático -->
+            <div class="introducao">
+                <div>
+                    <h1>Monitoramento de precipitação</h1>
+                    <p>Explore 12 bocas de lobo fictícias e simule diferentes níveis de água.</p>
+                </div>
+                <div class="hero-nota">
+                    <span class="selo">Ambiente de simulação</span>
+                </div>
             </div>
-            <div class="hero-nota">
-                <span class="selo">Ambiente de simulação</span>
-            </div>
-        </div>
-        <!-- Contadores derivados dos mesmos dados exibidos no mapa -->
-        <div id="monitoramento" class="dashboard">
-            <div class="mapa-coluna">
-                <div class="mapa-cabecalho">
-                    <div>
-                        <h2>Pinheiros, São Paulo</h2>
-                    </div>
-                    <span class="etiqueta">12 bocas de lobo monitoradas</span>
-                </div>
-                <!-- Território ilustrativo -->
-                <div id="mapa" class="mapa" aria-label="Mapa fictício de Pinheiros com doze bocas de lobo simuladas">
-                    <div class="quadras" aria-hidden="true">
-                        <div class="quadra" style="left:24%;top:8%;"></div>
-                        <div class="quadra" style="left:42%;top:8%;"></div>
-                        <div class="quadra" style="left:60%;top:8%;"></div>
-                        <div class="quadra" style="left:78%;top:8%;"></div>
-                        <div class="quadra" style="left:24%;top:28%;"></div>
-                        <div class="quadra" style="left:42%;top:28%;"></div>
-                        <div class="quadra" style="left:60%;top:28%;"></div>
-                        <div class="quadra" style="left:78%;top:28%;"></div>
-                        <div class="quadra" style="left:24%;top:48%;"></div>
-                        <div class="quadra" style="left:42%;top:48%;"></div>
-                        <div class="quadra" style="left:60%;top:48%;"></div>
-                        <div class="quadra" style="left:78%;top:48%;"></div>
-                        <div class="quadra" style="left:24%;top:68%;"></div>
-                        <div class="quadra" style="left:42%;top:68%;"></div>
-                        <div class="quadra" style="left:60%;top:68%;"></div>
-                        <div class="quadra" style="left:78%;top:68%;"></div>
-                    </div>
-                    <div class="rio" aria-hidden="true">
-                        <span>Rio Pinheiros</span>
-                    </div>
-                    <div class="parque parque-um" aria-hidden="true">Praça do Limoeiro</div>
-                    <div class="parque parque-dois" aria-hidden="true"></div>
-                    <div class="rua rua-horizontal rua-um" aria-hidden="true">
-                        <span>Rua dos Pinheiros</span>
-                    </div>
-                    <div class="rua rua-horizontal rua-dois" aria-hidden="true">
-                        <span>Rua Augusta</span>
-                    </div>
-                    <div class="rua rua-vertical rua-tres" aria-hidden="true">
-                        <span>Av. Rebouças</span>
-                    </div>
-                    <div class="rua rua-vertical rua-quatro" aria-hidden="true"></div>
-                    <span class="bairro" aria-hidden="true">PINHEIROS</span>
-                    <div id="areas-atencao" class="camada-areas" aria-hidden="true"></div>
-                    <div id="pontos-mapa" class="camada-pontos"></div>
-                    <div class="escala">
-                    </div>
-                </div>
 
-                <div class="legenda-externa">
-                    <span>
-                        <i class="bolinha normal"></i> Normal</span>
-                    <span>
-                        <i class="bolinha atencao"></i> Atenção</span>
-                    <span>
-                        <i class="bolinha critico"></i> Crítico</span>
-                    <span>◯ Vermelho: raio de 30 m indicando perigo nos arredores.</span>
+            <!-- Contadores derivados dos mesmos dados exibidos no mapa -->
+            <div id="monitoramento" class="dashboard">
+                <div class="mapa-coluna">
+                    <div class="mapa-cabecalho">
+                        <div>
+                            <h2>Pinheiros, São Paulo</h2>
+                        </div>
+                        <span class="etiqueta">12 bocas de lobo monitoradas</span>
+                    </div>
+                    
+                    <!-- Território ilustrativo -->
+                    <div id="mapa" class="mapa" aria-label="Mapa fictício de Pinheiros com doze bocas de lobo simuladas">
+                        <div class="quadras" aria-hidden="true">
+                            <div class="quadra" style="left:24%;top:8%;"></div>
+                            <div class="quadra" style="left:42%;top:8%;"></div>
+                            <div class="quadra" style="left:60%;top:8%;"></div>
+                            <div class="quadra" style="left:78%;top:8%;"></div>
+                            <div class="quadra" style="left:24%;top:28%;"></div>
+                            <div class="quadra" style="left:42%;top:28%;"></div>
+                            <div class="quadra" style="left:60%;top:28%;"></div>
+                            <div class="quadra" style="left:78%;top:28%;"></div>
+                            <div class="quadra" style="left:24%;top:48%;"></div>
+                            <div class="quadra" style="left:42%;top:48%;"></div>
+                            <div class="quadra" style="left:60%;top:48%;"></div>
+                            <div class="quadra" style="left:78%;top:48%;"></div>
+                            <div class="quadra" style="left:24%;top:68%;"></div>
+                            <div class="quadra" style="left:42%;top:68%;"></div>
+                            <div class="quadra" style="left:60%;top:68%;"></div>
+                            <div class="quadra" style="left:78%;top:68%;"></div>
+                        </div>
+                        <div class="rio" aria-hidden="true">
+                            <span>Rio Pinheiros</span>
+                        </div>
+                        <div class="parque parque-um" aria-hidden="true">Praça do Limoeiro</div>
+                        <div class="parque parque-dois" aria-hidden="true"></div>
+                        <div class="rua rua-horizontal rua-um" aria-hidden="true">
+                            <span>Rua dos Pinheiros</span>
+                        </div>
+                        <div class="rua rua-horizontal rua-dois" aria-hidden="true">
+                            <span>Rua Augusta</span>
+                        </div>
+                        <div class="rua rua-vertical rua-tres" aria-hidden="true">
+                            <span>Av. Rebouças</span>
+                        </div>
+                        <div class="rua rua-vertical rua-quatro" aria-hidden="true"></div>
+                        <span class="bairro" aria-hidden="true">PINHEIROS</span>
+                        <div id="areas-atencao" class="camada-areas" aria-hidden="true"></div>
+                        <div id="pontos-mapa" class="camada-pontos"></div>
+                        <div class="escala">
+                    </div>
+                    </div>
+                    <div class="legenda-externa">
+                        <span>
+                            <i class="bolinha normal"></i> Normal</span>
+                        <span>
+                            <i class="bolinha atencao"></i> Atenção</span>
+                        <span>
+                            <i class="bolinha critico"></i> Crítico</span>
+                        <span>◯ Vermelho: raio de 30 m indicando perigo nos arredores.</span>
+                    </div>
                 </div>
-                </div>
-
                 <aside class="painel-lateral" aria-label="Simulação do ponto selecionado">
                     <article class="caixa" aria-labelledby="titulo-painel">
                         <h3 id="titulo-painel">Painel — Boca de lobo BL-01</h3>
                         <label for="seletor-ponto">Boca de lobo selecionada</label>
-                        <select id="seletor-ponto" aria-label="Selecionar boca de lobo">
-                            <option>BL-01</option>
-                        </select>
+                        <select id="seletor-ponto" aria-label="Selecionar boca de lobo"></select>
                         <p id="descricao-ponto" class="descricao-ponto" role="status"></p>
                         <dl class="linha">
                             <div>
@@ -134,6 +127,7 @@
                             <label for="chuva">Chuva simulada (0 a 200 mm/h)</label>
                             <input id="chuva" name="chuva" type="number" min="0" max="200" step="1" value="5" required>
                             <button type="submit">Aplicar simulação</button>
+                            <span id="mensagem-simulacao" role="status"></span>
                         </form>
                         <div class="linha">
                             <button id="cenario-normal" type="button">Cenário normal</button>
@@ -141,49 +135,47 @@
                             <button id="cenario-critico" type="button">Cenário crítico</button>
                         </div>
                         <small id="limites"></small>
-                        </article>
-                        </aside>
-                        </div>
-                        <article class="projecao caixa" aria-labelledby="titulo-projecao">
-                            <h2 id="titulo-projecao">Projeção do ponto <span id="ponto-projecao">BL-01</span>
-                            </h2>
-                            <p>Informe a subida observada ou simulada.</p>
-                            <form id="form-projecao">
-                                <label for="taxa-subida">Taxa de subida (0 a 20 cm/min)</label>
-                                <input id="taxa-subida" type="number" min="0" max="20" step="0.01" value="0" required>
-                                <label for="tempo-projecao">Tempo da projeção (0 a 60 min)</label>
-                                <input id="tempo-projecao" type="number" min="0" max="60" step="0.1" value="15" required>
-                                <label for="altura-limite">Altura limite (1 a 100 cm)</label>
-                                <input id="altura-limite" type="number" min="1" max="100" step="0.1" value="100" required>
-                                <label for="chuva-acumulada">Chuva já acumulada (0 a 500 mm)</label>
-                                <input id="chuva-acumulada" type="number" min="0" max="500" step="0.1" value="0" required>
-                                <button type="submit">Calcular projeção</button>
-                                <span id="mensagem-projecao" role="status"></span>
-                            </form>
-                            <dl class="linha">
-                                <div>
-                                    <dt>Nível projetado</dt>
-                                    <dd id="nivel-projetado"></dd>
-                                </div>
-                                <div>
-                                    <dt>Tempo até a altura limite</dt>
-                                    <dd id="tempo-limite"></dd>
-                                </div>
-                            </dl>
-                            <p id="aviso-projecao" role="status"></p>
-                            <small>100 cm representa a borda fictícia. Um limite menor é apenas uma referência de acompanhamento.</small>
-                        </article>
-                        <div class="resumo">
-                            <div>
-                                <span class="icone">≋</span>
-                                <div>
-                    <strong>Você controla o cenário</strong>
-                    <span>Altere água e chuva e observe o estado.</span>
+                    </article>
+                </aside>
+            </div>
+            <article class="projecao caixa" aria-labelledby="titulo-projecao">
+                <h2 id="titulo-projecao">Projeção do ponto <span id="ponto-projecao">BL-01</span>
+                </h2>
+                <p>Informe a subida observada ou simulada.</p>
+                <form id="form-projecao">
+                    <label for="taxa-subida">Taxa de subida (0 a 20 cm/min)</label>
+                    <input id="taxa-subida" type="number" min="0" max="20" step="0.01" value="0" required>
+                    <label for="tempo-projecao">Tempo da projeção (0 a 60 min)</label>
+                    <input id="tempo-projecao" type="number" min="0" max="60" step="0.1" value="15" required>
+                    <label for="altura-limite">Altura limite (1 a 100 cm)</label>
+                    <input id="altura-limite" type="number" min="1" max="100" step="0.1" value="100" required>
+                    <label for="chuva-acumulada">Chuva já acumulada (0 a 500 mm)</label>
+                    <input id="chuva-acumulada" type="number" min="0" max="500" step="0.1" value="0" required>
+                    <button type="submit">Calcular projeção</button>
+                    <span id="mensagem-projecao" role="status"></span>
+                </form>
+                <dl class="linha">
+                    <div>
+                        <dt>Nível projetado</dt>
+                        <dd id="nivel-projetado"></dd>
+                    </div>
+                    <div>
+                        <dt>Tempo até a altura limite</dt>
+                        <dd id="tempo-limite"></dd>
+                    </div>
+                </dl>
+                <p id="aviso-projecao" role="status"></p>
+            </article>
+            <div class="resumo">
+                <div>
+                    <span class="icone">≋</span>
+                    <div>
+                        <strong>Você controla o cenário</strong>
+                        <span>Altere água e chuva e observe o estado.</span>
+                    </div>
                 </div>
             </div>
-        </div>
-
-         <section id="problema" aria-labelledby="titulo-problema">
+            <section id="problema" aria-labelledby="titulo-problema">
                 <h2 id="titulo-problema">Problema</h2>
                 <p>O acúmulo de água nas ruas dificulta deslocamentos e afeta moradores de regiões sujeitas a alagamentos.</p>
                 <p>A proposta explora como medições simuladas podem apresentar mudanças no nível da água de bocas de lobo.</p>
@@ -191,15 +183,16 @@
                     <img id="imagem-slide" src="img/chuva.svg" alt="Ilustração de chuva sobre uma rua" width="720" height="300">
                     <figcaption id="legenda-slide" aria-live="polite">1 de 3 — Chuva na cidade</figcaption>
                 </figure>
+
                 <div class="linha">
                     <button id="anterior" type="button">Imagem anterior</button>
                     <button id="proximo" type="button">Próxima imagem</button>
                     <button id="pausar" type="button">Pausar</button>
                 </div>
-
+            </section>
         <section id="tecnologias" aria-labelledby="titulo-tecnologias">
             <h2 id="titulo-tecnologias">Tecnologias</h2>    
-        </section> 
+            </section>
 
         <section id="objetivos" aria-labelledby="titulo-objetivos">
             <h2 id="titulo-objetivos">Objetivos</h2>
