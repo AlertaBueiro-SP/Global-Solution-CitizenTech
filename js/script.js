@@ -1,9 +1,10 @@
-// Limites demonstrativos para os níveis da água
+var atualizarProjecao = null;
+
+/* Dados inventados para estudar DOM. Não representam limites técnicos reais. */
 var limiteAtencao = 40;
 var limiteCritico = 70;
-
-// Elementos do painel
 var agua = document.getElementById("agua");
+
 var chuva = document.getElementById("chuva");
 var estado = document.getElementById("estado");
 var seletor = document.getElementById("seletor-ponto");
@@ -28,12 +29,12 @@ var pontos = [
 
 var pontoSelecionado = 0;
 
-// Medidas fictícias usadas para desenhar os círculos.
+// Medidas fictícias usadas para desenhar os círculos
 var larguraTerritorio = 500;
 var raioAtencao = 30;
 var larguraCirculo = (raioAtencao * 2 / larguraTerritorio) * 100;
 
-// Classifica o ponto pelo nível atual da água.
+// Classifica o ponto pelo nível atual da água
 function classificarNivel(nivel) {
     if (nivel >= limiteCritico) {
         return "critico";
@@ -107,19 +108,17 @@ function mostrarPonto() {
     seletor.value = pontoSelecionado;
 
     if (classe === "critico") {
-        mensagem = "Nível crítico na simulação. Não confirma alagamento ou obstrução.";
-    } else if (classe === "atencao") {
-        mensagem = "Nível elevado. Acompanhe a evolução das leituras simuladas.";
-    } else {
-        mensagem = "Nível baixo na simulação. Não comprova eficiência da drenagem.";
+        mensagem = "Possível dificuldade de drenagem ou obstrução. Exige verificação; não é diagnóstico confirmado.";
     }
-
     document.getElementById("descricao-ponto").textContent = mensagem;
-
     atualizarMapa();
+
+    if (atualizarProjecao !== null) {
+        atualizarProjecao();
+    }
 }
 
-// Salva as leituras somente no ponto selecionado
+// Altera somente a boca de lobo selecionada, sem modificar as demais.
 function atualizarPainel(nivel, intensidade) {
     pontos[pontoSelecionado].agua = nivel;
     pontos[pontoSelecionado].chuva = intensidade;
@@ -236,7 +235,7 @@ formulario.addEventListener("submit", function (evento) {
 
     atualizarPainel(nivel, intensidade);
 
-    mensagemSimulacao.textContent = "Simulação atualizada. Dados fictícios.";
+    mensagemSimulacao.textContent = "Simulação atualizada.";
 });
 
 // Aplica valores prontos ao ponto selecionado

@@ -1,3 +1,5 @@
+var atualizarGrafico = null;
+
 /* Guarda os parâmetros de projecao de cada ponto somente nesta sessão*/
 for (var i = 0; i < pontos.length; i++) {
     pontos[i].taxa = 0;
@@ -28,11 +30,17 @@ function mostrarProjecao() {
         mensagem = numeroFormatado(tempo) + " min, se a taxa permanecer constante.";
     }
     document.getElementById("tempo-limite").textContent = mensagem;
-    document.getElementById("aviso-projecao").textContent = projetado > ponto.limite
-        ? "A projeção ultrapassa o limite. Valores posteriores são extrapolações matemáticas."
-        : "A projeção mantém a taxa constante. O nível atual do mapa não é alterado.";
+    if (projetado > ponto.limite) {
+        document.getElementById("aviso-projecao").textContent =
+            "A projeção ultrapassa o limite.";
+    } else {
+        document.getElementById("aviso-projecao").textContent =
+            "A projeção mantém a taxa constante.";
+    }
     document.getElementById("ponto-projecao").textContent = ponto.id;
-    if (typeof desenharGrafico === "function") { desenharGrafico(); }
+    if (atualizarGrafico !== null) {
+        atualizarGrafico();
+    }
 }
 
 document.getElementById("form-projecao").addEventListener("submit", function (evento) {
@@ -43,7 +51,10 @@ document.getElementById("form-projecao").addEventListener("submit", function (ev
     var limite = Number(document.getElementById("altura-limite").value);
     var acumulada = Number(document.getElementById("chuva-acumulada").value);
     if (!Number.isFinite(taxa) || !Number.isFinite(minutos) ||
-        !Number.isFinite(limite) || !Number.isFinite(acumulada)) { return; }
+        !Number.isFinite(limite) || !Number.isFinite(acumulada)) { 
+        return; 
+    }
+
     var ponto = pontos[pontoSelecionado];
     ponto.taxa = taxa;
     ponto.minutos = minutos;
