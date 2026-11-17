@@ -275,6 +275,88 @@ function marcarSecao() {
     }
 }
 
+// Slideshow
+var imagens = [
+    "img/chuva.svg",
+    "img/sensor.svg",
+    "img/painel.svg"
+];
+
+var descricoes = [
+    "Ilustração de chuva sobre uma rua",
+    "Ilustração de sensor acima da água em um bueiro",
+    "Ilustração de painel com três estados demonstrativos"
+];
+
+var legendas = [
+    "Chuva na cidade",
+    "Medição simulada",
+    "Informação demonstrativa"
+];
+
+var slideAtual = 0;
+var temporizador;
+var pausado = false;
+
+// Elementos do slideshow
+var imagemSlide = document.getElementById("imagem-slide");
+var legendaSlide = document.getElementById("legenda-slide");
+var botaoAnterior = document.getElementById("anterior");
+var botaoProximo = document.getElementById("proximo");
+var botaoPausar = document.getElementById("pausar");
+
+// Atualiza a imagem e a legenda
+function mostrarSlide(numero) {
+    slideAtual = numero;
+
+    if (slideAtual > 2) {
+        slideAtual = 0;
+    } else if (slideAtual < 0) {
+        slideAtual = 2;
+    }
+
+    imagemSlide.src = imagens[slideAtual];
+    imagemSlide.alt = descricoes[slideAtual];
+
+    legendaSlide.textContent =
+        (slideAtual + 1) + " de 3 — " + legendas[slideAtual];
+}
+
+// Troca a imagem a cada cinco segundos
+function iniciarSlideshow() {
+    temporizador = setInterval(function () {
+        mostrarSlide(slideAtual + 1);
+    }, 5000);
+}
+
+// Volta para a imagem anterior
+botaoAnterior.addEventListener("click", function () {
+    mostrarSlide(slideAtual - 1);
+});
+
+// Avança para a próxima imagem
+botaoProximo.addEventListener("click", function () {
+    mostrarSlide(slideAtual + 1);
+});
+
+// Pausa ou continua a troca automática
+botaoPausar.addEventListener("click", function () {
+    if (pausado === true) {
+        iniciarSlideshow();
+
+        botaoPausar.textContent = "Pausar slideshow";
+        pausado = false;
+    } else {
+        clearInterval(temporizador);
+
+        botaoPausar.textContent = "Continuar";
+        pausado = true;
+    }
+});
+
+// Inicia a troca automática ao abrir a página
+iniciarSlideshow();
+
 window.addEventListener("hashchange", marcarSecao);
 
 criarPontos();
