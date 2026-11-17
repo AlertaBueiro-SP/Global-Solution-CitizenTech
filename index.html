@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlertaBueiro SP</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="script.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -101,7 +101,7 @@
                     <article class="caixa" aria-labelledby="titulo-painel">
                         <h3 id="titulo-painel">Painel — Boca de lobo BL-01</h3>
                         <label for="seletor-ponto">Boca de lobo selecionada</label>
-                        <select id="seletor-ponto" aria-label="Selecionar boca de lobo" disabled>
+                        <select id="seletor-ponto" aria-label="Selecionar boca de lobo">
                             <option>BL-01</option>
                         </select>
                         <p id="descricao-ponto" class="descricao-ponto" role="status"></p>
@@ -121,15 +121,15 @@
                         </dl>
                         <form id="form-simulacao">
                             <label for="agua">Nível simulado da água (0 a 100 cm)</label>
-                            <input id="agua" name="agua" type="number" min="0" max="100" step="1" value="20" required disabled>
+                            <input id="agua" name="agua" type="number" min="0" max="100" step="1" value="20" required>
                             <label for="chuva">Chuva simulada (0 a 200 mm/h)</label>
-                            <input id="chuva" name="chuva" type="number" min="0" max="200" step="1" value="5" required disabled>
-                            <button type="submit" disabled>Aplicar simulação</button>
+                            <input id="chuva" name="chuva" type="number" min="0" max="200" step="1" value="5" required>
+                            <button type="submit">Aplicar simulação</button>
                         </form>
                         <div class="linha">
-                            <button id="cenario-normal" type="button" disabled>Cenário normal</button>
-                            <button id="cenario-atencao" type="button" disabled>Cenário de atenção</button>
-                            <button id="cenario-critico" type="button" disabled>Cenário crítico</button>
+                            <button id="cenario-normal" type="button">Cenário normal</button>
+                            <button id="cenario-atencao" type="button">Cenário de atenção</button>
+                            <button id="cenario-critico" type="button">Cenário crítico</button>
                         </div>
                         <small id="limites"></small>
                     </article>
