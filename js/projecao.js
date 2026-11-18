@@ -1,13 +1,6 @@
 var atualizarGrafico = null;
 
 /* Guarda os parâmetros de projecao de cada ponto somente nesta sessão*/
-for (var i = 0; i < pontos.length; i++) {
-    pontos[i].taxa = 0;
-    pontos[i].minutos = 15;
-    pontos[i].limite = 100;
-    pontos[i].acumulada = 0;
-}
-
 function numeroFormatado(valor) {
     return valor.toFixed(2).replace(".", ",");
 }
@@ -45,7 +38,9 @@ function mostrarProjecao() {
 
 document.getElementById("form-projecao").addEventListener("submit", function (evento) {
     evento.preventDefault();
-    if (!this.reportValidity()) { return; }
+    if (evento.currentTarget.reportValidity() === false) {
+        return;
+    }
     var taxa = Number(document.getElementById("taxa-subida").value);
     var minutos = Number(document.getElementById("tempo-projecao").value);
     var limite = Number(document.getElementById("altura-limite").value);
@@ -63,4 +58,5 @@ document.getElementById("form-projecao").addEventListener("submit", function (ev
     mostrarPonto();
     document.getElementById("mensagem-projecao").textContent = "Projeção atualizada para " + ponto.id + ".";
 });
+atualizarProjecao = mostrarProjecao;
 mostrarProjecao();

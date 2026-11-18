@@ -4,8 +4,12 @@ function projetarNivel(nivelInicial, taxaSubida, minutos) {
 }
 
 function tempoAteLimite(nivelInicial, taxaSubida, limite) {
-    if (nivelInicial >= limite) { return 0; }
-    if (taxaSubida <= 0) { return null; }
+    if (nivelInicial >= limite) {
+        return 0;
+    }
+    if (taxaSubida <= 0) {
+        return null;
+    }
     return (limite - nivelInicial) / taxaSubida;
 }
 

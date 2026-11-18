@@ -11,6 +11,7 @@
         <script src="js/modelo.js" defer></script>
         <script src="js/script.js" defer></script>
         <script src="js/projecao.js" defer></script>
+        <script src="js/grafico.js" defer></script>
     </head>
 
     <body>
@@ -47,9 +48,8 @@
                         <div>
                             <h2>Pinheiros, São Paulo</h2>
                         </div>
-                        <span class="etiqueta">12 bocas de lobo monitoradas</span>
+                        <span class="etiqueta">12 bocas de lobo fictícias</span>
                     </div>
-                    
                     <!-- Território ilustrativo -->
                     <div id="mapa" class="mapa" aria-label="Mapa fictício de Pinheiros com doze bocas de lobo simuladas">
                         <div class="quadras" aria-hidden="true">
@@ -90,6 +90,7 @@
                         <div id="pontos-mapa" class="camada-pontos"></div>
                         <div class="escala">
                     </div>
+                        <span class="mapa-nota">MAPA FICTÍCIO</span>
                     </div>
                     <div class="legenda-externa">
                         <span>
@@ -98,7 +99,7 @@
                             <i class="bolinha atencao"></i> Atenção</span>
                         <span>
                             <i class="bolinha critico"></i> Crítico</span>
-                        <span>◯ Vermelho: raio de 30 m indicando perigo nos arredores.</span>
+                        <span>Vermelho: raio ilustrativo de 30 m que indica perigo nos arredores.</span>
                     </div>
                 </div>
                 <aside class="painel-lateral" aria-label="Simulação do ponto selecionado">
@@ -165,6 +166,48 @@
                     </div>
                 </dl>
                 <p id="aviso-projecao" role="status"></p>
+                <figure class="grafico">
+                    <svg id="grafico-nivel" viewbox="0 0 620 310" role="img" aria-label="Gráfico de projeção do nível da água">
+                        <title>Projeção do nível da água</title>
+                        <desc>Eixo horizontal em minutos; eixo vertical em centímetros. Valores equivalentes na tabela.</desc>
+                        <line x1="65" y1="240" x2="565" y2="240" stroke="#cbd5e1"></line>
+                        <text id="marca-nivel-0" x="58" y="244" text-anchor="end">0</text>
+                        <text id="marca-tempo-0" x="65" y="262" text-anchor="middle">0</text>
+                        <line x1="65" y1="190" x2="565" y2="190" stroke="#cbd5e1"></line>
+                        <text id="marca-nivel-1" x="58" y="194" text-anchor="end">0</text>
+                        <text id="marca-tempo-1" x="190" y="262" text-anchor="middle">0</text>
+                        <line x1="65" y1="140" x2="565" y2="140" stroke="#cbd5e1"></line>
+                        <text id="marca-nivel-2" x="58" y="144" text-anchor="end">0</text>
+                        <text id="marca-tempo-2" x="315" y="262" text-anchor="middle">0</text>
+                        <line x1="65" y1="90" x2="565" y2="90" stroke="#cbd5e1"></line>
+                        <text id="marca-nivel-3" x="58" y="94" text-anchor="end">0</text>
+                        <text id="marca-tempo-3" x="440" y="262" text-anchor="middle">0</text>
+                        <line x1="65" y1="40" x2="565" y2="40" stroke="#cbd5e1"></line>
+                        <text id="marca-nivel-4" x="58" y="44" text-anchor="end">0</text>
+                        <text id="marca-tempo-4" x="565" y="262" text-anchor="middle">0</text>
+                        <text x="65" y="20">Nível (cm)</text>
+                        <text x="290" y="290">Tempo (min)</text>
+                        <line id="linha-limite" x1="65" x2="565" y1="40" y2="40" stroke="#b42339" stroke-dasharray="6 4"></line>
+                        <line id="reta-projecao" stroke="#08788b" stroke-width="3"></line>
+                        <circle id="inicio-reta" cx="65" r="4" fill="#08788b"></circle>
+                    </svg>
+                    <figcaption>Azul: projeção linear. Vermelho tracejado: altura limite.</figcaption>
+                </figure>
+                <details>
+                    <summary>Ver tabela por minuto</summary>
+                    <div class="tabela-rolagem">
+                        <table>
+                            <caption>Nível projetado do ponto selecionado</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tempo (min)</th>
+                                    <th scope="col">Nível (cm)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela-niveis"></tbody>
+                        </table>
+                    </div>
+                </details>
             </article>
             <div class="resumo">
                 <div>
@@ -188,35 +231,53 @@
                     <button id="anterior" type="button">Imagem anterior</button>
                     <button id="proximo" type="button">Próxima imagem</button>
                     <button id="pausar" type="button">Pausar</button>
-                </div>
+              </div>
             </section>
-        <section id="tecnologias" aria-labelledby="titulo-tecnologias">
-            <h2 id="titulo-tecnologias">Tecnologias</h2>    
+            <section id="tecnologias" aria-labelledby="titulo-tecnologias">
+                <h2 id="titulo-tecnologias">Tecnologias</h2>
+                <p>HTML organiza o conteúdo, CSS define a apresentação e JavaScript permite interagir com dados de demonstração.</p>
+                <p>Python e JavaScript projetam níveis; o circuito simulado mede, classifica e sinaliza condições locais.</p>
+            </section>
+            <section id="objetivos" aria-labelledby="titulo-objetivos">
+                <h2 id="titulo-objetivos">Objetivos</h2>
+                <p>Monitorar níveis simulados, comparar projeções e explicar alertas são os objetivos desta demonstração.</p>
+                <details>
+                    <summary>Como os alertas são calculados</summary>
+                    <ul>
+                        <li>Crítico: nível ≥ 80 cm; ou nível ≥ 60 cm e subida ≥ 5 cm/min; ou chuva acumulada ≥ 39,8 mm e nível ≥ 50 cm.</li>
+                        <li>Atenção: nível ≥ 50 cm; ou chuva ≥ 60 mm/h e subida ≥ 3 cm/min; ou chuva ≤ 6 mm/h e nível ≥ 25 cm.</li>
+                        <li>Normal: nenhuma condição anterior.</li>
+                    </ul>
+                </details>
             </section>
 
-        <section id="objetivos" aria-labelledby="titulo-objetivos">
-            <h2 id="titulo-objetivos">Objetivos</h2>
-            <p> </p>
-            <p> </p>       
-        </section>
-
-        <section id="publico" aria-labelledby="titulo-publico">
-            <h2 id="titulo-publico">Público-alvo</h2>
-            <p> </p>
-            <p> </p>
-        </section>
-
-        <section id="beneficios" aria-labelledby="titulo-beneficios">
-            <h2 id="titulo-beneficios">Benefícios</h2>
-            <p> </p>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>AlertaBueiro SP - Protótipo</p>
-        <a href="#problema">Voltar ao início</a>
-    </footer>
-
-</body>
+           <section id="publico" aria-labelledby="titulo-publico">
+                <h2 id="titulo-publico">Público-alvo</h2>
+                <p>Moradores de regiões de São Paulo sujeitos a alagamentos, especialmente pessoas que caminham ou se deslocam nessas áreas.</p>
+                <p>Comerciantes, pedestres e trabalhadores também poderão se beneficiar de informações mais compreensíveis sobre a drenagem local.</p>
+            </section>
+            <section id="beneficios" aria-labelledby="titulo-beneficios">
+                <h2 id="titulo-beneficios">Benefícios</h2>
+                <p>A proposta busca facilitar a compreensão das medições e demonstrar indicadores preventivos.</p>
+                <h3>Formulário demonstrativo</h3>
+                <form id="form-feedback">
+                    <label for="perfil">Perfil fictício obrigatório</label>
+                    <select id="perfil" name="perfil" required>
+                        <option value="">Selecione</option>
+                        <option value="morador">Morador</option>
+                        <option value="comerciante">Comerciante</option>
+                        <option value="pedestre">Pedestre</option>
+                    </select>
+                    <label for="mensagem">Comentário de teste obrigatório (sem dados pessoais)</label>
+                    <textarea id="mensagem" name="mensagem" maxlength="300" required></textarea>
+                    <button type="submit">Validar demonstração</button>
+                    <span id="retorno-feedback" role="status"></span>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>AlertaBueiro SP - Protótipo</p>
+            <a href="#conteudo">Voltar ao início</a>
+        </footer>
+    </body>
 </html>

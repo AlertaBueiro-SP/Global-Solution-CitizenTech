@@ -1038,3 +1038,45 @@ footer p,footer a {
         flex-wrap: wrap;
     }
 }
+/* Projeção e gráfico. */
+.projecao {
+    margin-top: 24px;
+    height: auto;
+}
+
+.grafico {
+    max-width: 720px;
+}
+
+.grafico svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.grafico text {
+    font: 12px Arial, sans-serif;
+    fill: var(--texto);
+}
+
+.tabela-rolagem {
+    max-height: 300px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid var(--borda);
+}
+
+summary {
+    padding: 12px 0;
+    cursor: pointer;
+    font-weight: 700;
+}

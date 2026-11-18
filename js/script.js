@@ -1,8 +1,8 @@
 var atualizarProjecao = null;
 
 /* Dados inventados para estudar DOM. Não representam limites técnicos reais. */
-var limiteAtencao = 40;
-var limiteCritico = 70;
+var limiteAtencao = 50;
+var limiteCritico = 80;
 var agua = document.getElementById("agua");
 
 var chuva = document.getElementById("chuva");
@@ -27,23 +27,20 @@ var pontos = [
     { id: "BL-12", x: 84, y: 76, agua: 35, chuva: 15 }
 ];
 
+// Parâmetros iniciais de projeção de cada ponto
+for (var i = 0; i < pontos.length; i++) {
+    pontos[i].taxa = 0;
+    pontos[i].minutos = 15;
+    pontos[i].limite = 100;
+    pontos[i].acumulada = 0;
+}
+
 var pontoSelecionado = 0;
 
 // Medidas fictícias usadas para desenhar os círculos
 var larguraTerritorio = 500;
 var raioAtencao = 30;
 var larguraCirculo = (raioAtencao * 2 / larguraTerritorio) * 100;
-
-// Classifica o ponto pelo nível atual da água
-function classificarNivel(nivel) {
-    if (nivel >= limiteCritico) {
-        return "critico";
-    } else if (nivel >= limiteAtencao) {
-        return "atencao";
-    } else {
-        return "normal";
-    }
-}
 
 function nomeEstado(classe) {
     if (classe === "critico") {
@@ -59,7 +56,12 @@ function nomeEstado(classe) {
 function atualizarMapa() {
     for (var i = 0; i < pontos.length; i++) {
         var ponto = pontos[i];
-        var classe = classificarNivel(ponto.agua);
+        var classe = classificarPonto(
+            ponto.agua,
+            ponto.taxa,
+            ponto.chuva,
+            ponto.acumulada
+        );
         var botao = document.getElementById("pino-" + i);
         var circulo = document.getElementById("area-" + i);
 
@@ -88,7 +90,7 @@ function atualizarMapa() {
 // Mostra os dados do ponto selecionado
 function mostrarPonto() {
     var ponto = pontos[pontoSelecionado];
-    var classe = classificarNivel(ponto.agua);
+    var classe = classificarPonto(ponto.agua, ponto.taxa, ponto.chuva, ponto.acumulada);
     var mensagem;
 
     document.getElementById("titulo-painel").textContent =
@@ -107,8 +109,12 @@ function mostrarPonto() {
     chuva.value = ponto.chuva;
     seletor.value = pontoSelecionado;
 
-    if (classe === "critico") {
-        mensagem = "Possível dificuldade de drenagem ou obstrução. Exige verificação; não é diagnóstico confirmado.";
+  if (classe === "critico") {
+        mensagem = "Nível crítico na simulação. Não confirma alagamento ou obstrução.";
+    } else if (classe === "atencao") {
+        mensagem = "Nível elevado. Acompanhe as leituras simuladas.";
+    } else {
+        mensagem = "Nível baixo na simulação. Não comprova eficiência da drenagem.";
     }
     document.getElementById("descricao-ponto").textContent = mensagem;
     atualizarMapa();
@@ -240,6 +246,8 @@ formulario.addEventListener("submit", function (evento) {
 
 // Aplica valores prontos ao ponto selecionado
 function aplicarCenario(nivel, intensidade) {
+    pontos[pontoSelecionado].taxa = 0;
+    pontos[pontoSelecionado].acumulada = 0;
     atualizarPainel(nivel, intensidade);
 
     mensagemSimulacao.textContent = "Cenário fictício aplicado.";
@@ -363,7 +371,27 @@ mostrarPonto();
 marcarSecao();
 
 document.getElementById("limites").textContent =
-    "Limites demonstrativos: normal abaixo de " + limiteAtencao +
-    " cm; atenção de " + limiteAtencao + " até menos de " + limiteCritico +
-    " cm; crítico a partir de " + limiteCritico +
-    " cm. Chuva apenas exibida.";
+    "Limites: atenção a partir de 50 cm; crítico a partir de 80 cm. " +
+    "Subida e chuva também participam da classificação.";
+
+// Valida um comentário fictício, sem enviar dados
+var formularioFeedback = document.getElementById("form-feedback");
+
+formularioFeedback.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    if (formularioFeedback.reportValidity() === false) {
+        return;
+    }
+
+    var comentario = document.getElementById("mensagem");
+    var retorno = document.getElementById("retorno-feedback");
+
+    if (comentario.value.trim() === "") {
+        retorno.textContent = "Digite um comentário:";
+        comentario.focus();
+        return;
+    }
+
+    retorno.textContent = "Demonstração sem envio ou armazenamento.";
+});
