@@ -1,0 +1,197 @@
+body {
+    background: #ffffff;
+    overflow-x: clip;
+}
+
+.area-clima {
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 60px;
+}
+
+.area-clima::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Degrade */
+.tempo-sol .area-clima::before {
+    background:
+        linear-gradient(to bottom, transparent 65%, #ffffff 100%),
+        radial-gradient(ellipse at 85% 0%, #fff0c8, transparent 48%),
+        linear-gradient(to bottom, #f4faf9, #ffffff);
+}
+
+.tempo-chuva .area-clima::before {
+    background:
+        linear-gradient(to bottom, transparent 65%, #ffffff 100%),
+        radial-gradient(ellipse at 85% 0%, #dce9f4, transparent 48%),
+        linear-gradient(to bottom, #f4f8fb, #ffffff);
+}
+
+/* Clima */
+.introducao {
+    align-items: center;
+    gap: 40px;
+}
+
+.introducao>div:first-child {
+    flex: 1;
+}
+
+.hero-nota {
+    width: 300px;
+    flex-shrink: 0;
+    align-items: stretch;
+    text-align: left;
+}
+
+.resumo-clima {
+    padding: 8px 0 8px 16px;
+}
+
+.clima-topo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.clima-topo img {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+}
+
+.resumo-clima small {
+    font-size: 10px;
+    color: #536b7d;
+}
+
+.resumo-clima h2 {
+    margin: 3px 0;
+    font-size: 21px;
+}
+
+.introducao .resumo-clima p {
+    margin: 12px 0;
+    font-size: 12px;
+    color: #455f72;
+}
+
+.clima-botoes {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.clima-botoes button {
+    padding: 5px 14px;
+    border-radius: 18px;
+    border: 1px solid #a5b6bf;
+    background: #ffffff;
+    color: #15384a;
+    cursor: pointer;
+}
+
+.clima-botoes button[aria-pressed="true"] {
+    background: #153f51;
+    border-color: #153f51;
+    color: #ffffff;
+}
+
+.clima-botoes button:focus-visible {
+    outline: 3px solid #087f85;
+    outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+    .introducao {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .hero-nota {
+        width: 100%;
+    }
+
+    .resumo-clima {
+        padding-left: 0;
+    }
+}
+
+.controles-clima {
+    position: absolute;
+    top: 215px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+}
+
+.controles-clima .clima-botoes {
+    margin: 0;
+}
+
+.info-clima {
+    position: relative;
+}
+
+.info-clima summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #8b9da7;
+    border-radius: 50%;
+    color: #536b7d;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.info-clima summary::-webkit-details-marker {
+    display: none;
+}
+
+.info-clima summary:focus-visible {
+    outline: 3px solid #087f85;
+    outline-offset: 3px;
+}
+
+.info-clima p {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    width: 270px;
+    margin: 0;
+    padding: 16px;
+    background: #ffffff;
+    border: 1px solid #e4ebf0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px #15384914;
+    color: #455f72;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Em telas menores, mantém os controles acima do conteúdo*/
+@media (max-width: 1700px) {
+    .controles-clima {
+        position: relative;
+        top: auto;
+        right: auto;
+        justify-content: flex-end;
+        padding: 12px 24px 0;
+    }
+}

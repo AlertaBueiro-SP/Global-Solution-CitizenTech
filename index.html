@@ -8,15 +8,17 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
+        <script src="js/clima.js" defer></script>
         <script src="js/modelo.js" defer></script>
         <script src="js/script.js" defer></script>
         <script src="js/projecao.js" defer></script>
         <script src="js/grafico.js" defer></script>
         <script src="js/resumo.js" defer></script>
         <link rel="stylesheet" href="css/redesign.css">
+        <link rel="stylesheet" href="css/clima.css">
     </head>
 
-    <body>
+    <body class="tempo-sol">
         <a class="pular" href="#conteudo">Pular para o conteúdo</a>
         <header class="cabecalho">
             <a class="logo" href="#conteudo">AlertaBueiro <span>SP</span>
@@ -31,6 +33,21 @@
             <a class="botao-mapa" href="#mapa">Ver mapa ↗</a>
         </header>
 
+        <!-- Controles manuais do clima -->
+        <div class="area-clima">
+        <div class="controles-clima">
+            <div class="clima-botoes" aria-label="Testar aparência do clima">
+                <button id="clima-sol" type="button" aria-pressed="true">Sol</button>
+                <button id="clima-chuva" type="button" aria-pressed="false">Chuva</button>
+            </div>
+            <details class="info-clima">
+                <summary aria-label="Sobre a simulação do clima">i</summary>
+                <p>A proposta é consultar uma API meteorológica para atualizar o clima e a aparência do site automaticamente.
+                    Neste protótipo, essa integração não foi implementada: os botões simulam a mudança. 
+                </p>
+            </details>
+        </div>
+
         <main id="conteudo">
             <!-- Mapa local esquemático -->
             <div class="introducao">
@@ -39,7 +56,17 @@
                     <p>Explore 12 bocas de lobo fictícias e simule diferentes níveis de água.</p>
                 </div>
                 <div class="hero-nota">
-                    <span class="selo">Ambiente de simulação</span>
+                    <!-- Clima demonstrativo, sem consulta a dados reais -->
+                    <div class="resumo-clima">
+                        <div class="clima-topo">
+                            <img id="icone-clima" src="img/sol.svg" alt="" width="64" height="64">
+                            <div>
+                                <small>PINHEIROS · CLIMA </small>
+                                <h2 id="titulo-clima">Tempo aberto</h2>
+                            </div>
+                        </div>
+                        <p id="mensagem-clima" role="status">Dia de sol. Acompanhe os pontos monitorados.</p>
+                    </div>
                 </div>
             </div>
 
