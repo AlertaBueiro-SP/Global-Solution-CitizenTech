@@ -1,0 +1,513 @@
+:root {
+    --fundo: #f5f8fa;
+    --superficie: #ffffff;
+    --texto: #152a3a;
+    --suave: #536b7d;
+    --borda: #e4ebf0;
+    --marinho: #112b3f;
+    --ciano: #40d1c7;
+    --link: #087f85;
+    --verde: #16866a;
+    --amarelo: #9d6911;
+    --vermelho: #c6475b;
+    --sombra: 0 8px 30px #1538490e;
+}
+
+body {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+header {
+    padding: 22px max(4%, calc((100% - 1370px) / 2));
+    gap: 26px;
+}
+
+.marca {
+    font-size: 22px;
+}
+
+nav {
+    gap: 22px;
+}
+
+nav a {
+    color: #c2d7e2;
+    font-size: 13px;
+}
+
+.botao-mapa {
+    border: 1px solid #4c6878;
+    border-radius: 24px;
+    background: transparent;
+    color: #e3f6f5;
+    padding: 10px 18px;
+}
+
+.botao-mapa:hover {
+    background: #1b4558;
+}
+
+main {
+    max-width: 1450px;
+    padding: 40px;
+}
+
+.introducao {
+    margin-bottom: 28px;
+}
+
+h1 {
+    max-width: 750px;
+    margin-top: 12px;
+    font-size: clamp(29px, 3vw, 40px);
+    letter-spacing: -1.2px;
+    color: var(--marinho);
+}
+
+.sobretitulo {
+    color: var(--link);
+    font-size: 11px;
+}
+
+.introducao p {
+    font-size: 14px;
+}
+
+.selo {
+    padding: 12px 16px;
+    border: 1px solid #cbe9e5;
+    border-radius: 13px;
+    background: #e5f6f4;
+    color: #176b70;
+    font-size: 12px;
+}
+
+.dashboard {
+    align-items: flex-start;
+}
+
+.mapa-coluna,
+.caixa,
+section {
+    border-radius: 19px;
+    border-color: var(--borda);
+    box-shadow: var(--sombra);
+}
+
+.mapa-cabecalho {
+    padding: 22px;
+}
+
+.mapa-cabecalho h2 {
+    font-size: 19px;
+}
+
+.etiqueta {
+    border: 1px solid var(--borda);
+    background: #f9fbfc;
+    color: var(--suave);
+    font-size: 11px;
+}
+
+.mapa {
+    background: #eff3ec;
+}
+
+/* Marcadores circulares */
+.pino {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 2px;
+    border: 3px solid white;
+    border-radius: 50%;
+    font-size: 8px;
+    box-shadow: 0 3px 9px #1a47554d;
+}
+
+.pino::before {
+    content: none;
+}
+
+.pino.normal {
+    background: var(--verde);
+}
+
+.pino.atencao {
+    background: #e6ad44;
+    color: #4f380a;
+}
+
+.pino.critico {
+    background: #cf4056;
+}
+
+.pino[aria-pressed="true"] {
+    outline: 3px solid var(--marinho);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px #ffffffb8;
+}
+
+.area-critica {
+    background: #f7a8b22e;
+    border-color: #df536688;
+}
+
+.parque::before {
+    content: none;
+}
+
+.mapa-nota {
+    font-size: 9px;
+    padding: 6px 8px;
+}
+
+.legenda-externa,
+.mapa-rodape {
+    padding: 16px 22px;
+    font-size: 11px;
+}
+
+.painel-lateral {
+    flex-basis: 345px;
+}
+
+.caixa {
+    padding: 22px;
+    height: auto;
+}
+
+.caixa h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.descricao-ponto {
+    padding: 12px;
+    background: #eff8f8;
+    border-color: #d8eceb;
+    color: #365f68;
+    font-size: 13px;
+}
+
+label {
+    color: #445f72;
+    font-size: 13px;
+}
+
+input,
+select,
+textarea {
+    padding: 11px 12px;
+    border-color: #dce6ec;
+    border-radius: 9px;
+    background: #f9fbfc;
+    font-size: 14px;
+}
+
+dl.linha>div {
+    flex-basis: 110px;
+    background: #fcfdfd;
+    border-color: var(--borda);
+    border-radius: 12px;
+}
+
+dt {
+    color: #536b7d;
+    font-size: 12px;
+}
+
+dd {
+    font-size: 22px;
+}
+
+form button {
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+.caixa .linha button {
+    min-height: 45px;
+    font-size: 11px;
+}
+
+small,
+#limites,
+form span {
+    color: #536b7d;
+    font-size: 12px;
+}
+
+.normal {
+    color: var(--verde);
+}
+
+.atencao {
+    color: var(--amarelo);
+}
+
+.critico {
+    color: var(--vermelho);
+}
+
+section {
+    margin-top: 24px;
+    padding: 28px;
+}
+
+section p,
+section li {
+    font-size: 15px;
+}
+
+.projecao {
+    margin-top: 24px;
+}
+
+/* Cada par de rótulo e campo ocupa uma linha */
+.projecao form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 520px;
+}
+
+.projecao form label,
+.projecao form input,
+.projecao form button,
+.projecao form span {
+    flex: auto;
+    width: 100%;
+}
+
+.projecao form label {
+    margin-top: 8px;
+}
+
+.projecao dd {
+    font-size: 19px;
+}
+
+figure {
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+}
+
+figcaption {
+    color: #536b7d;
+    font-size: 12px;
+}
+
+footer {
+    padding: 26px 4%;
+}
+
+footer p,
+footer a {
+    color: #c2d7e2;
+    font-size: 12px;
+}
+
+.indicadores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.indicador {
+    flex: 1 1 180px;
+    min-width: 0;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: var(--sombra);
+}
+
+.indicador strong {
+    display: block;
+    font-size: 31px;
+    color: var(--marinho);
+}
+
+.indicador>div>span {
+    font-size: 13px;
+    color: #536b7d;
+}
+
+.indicador small {
+    font-size: 11px;
+}
+
+.indicador-icone {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+}
+
+.indicador-normal .indicador-icone {
+    background: #e7f7f0;
+    color: var(--verde);
+}
+
+.indicador-atencao .indicador-icone {
+    background: #fff4df;
+    color: var(--amarelo);
+}
+
+.indicador-critico .indicador-icone {
+    background: #fff0f2;
+    color: var(--vermelho);
+}
+
+@media (max-width: 1100px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+    }
+
+    main {
+        padding: 30px 24px;
+    }
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .mapa-coluna,
+    .painel-lateral {
+        width: 100%;
+    }
+
+    .painel-lateral {
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        gap: 16px;
+        padding: 18px 16px;
+    }
+
+    nav {
+        display: flex;
+        gap: 10px 18px;
+    }
+
+    main {
+        padding: 26px 16px;
+    }
+
+    .introducao,
+    .mapa-cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .indicadores {
+        gap: 10px;
+    }
+
+    .indicador {
+        flex-basis: calc(50% - 10px);
+        padding: 14px;
+        gap: 8px;
+    }
+
+    .indicador strong {
+        font-size: 27px;
+    }
+
+    .indicador-icone {
+        display: none;
+    }
+
+    section,
+    .caixa {
+        padding: 18px;
+    }
+
+    .mapa-cabecalho {
+        padding: 18px;
+    }
+
+    .mapa-cabecalho h2 {
+        font-size: 18px;
+    }
+
+    .mapa-nota {
+        font-size: 7px;
+        top: 4px;
+        left: 4px;
+    }
+
+    .pino {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+        font-size: 7px;
+        border-width: 2px;
+    }
+
+    .bairro {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .projecao .linha {
+        flex-direction: column;
+    }
+
+    .projecao .linha>div {
+        flex-basis: auto;
+    }
+}
+
+/* Classes de cabeçalho */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px 4%;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+@media (max-width: 1100px) {
+    .cabecalho {
+        flex-wrap: wrap;
+    }
+
+    .links {
+        order: 3;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .cabecalho {
+        gap: 16px;
+        padding: 18px 16px;
+    }
+
+    .links {
+        gap: 10px 18px;
+    }
+}
