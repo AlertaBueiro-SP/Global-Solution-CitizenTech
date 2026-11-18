@@ -251,6 +251,65 @@ form span {
 .critico {
     color: var(--vermelho);
 }
+/* O cartão de água sobe suavemente conforme a medição */
+dl.linha>.cartao-medicao {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #f6fbfc;
+}
+
+.cartao-medicao-agua::before {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: var(--preenchimento, 0%);
+    border-radius: inherit;
+    background: #8edfe5;
+    content: "";
+    transition: height 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.barra-chuva {
+    width: 100%;
+    height: 5px;
+    margin-top: 8px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e4edf1;
+}
+
+.barra-chuva span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: #45b9d3;
+    transition: width 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cartao-estado {
+    transition: background-color 250ms ease;
+}
+
+.cartao-estado dt,
+.cartao-estado dd {
+    color: #ffffff;
+}
+
+.cartao-estado.normal {
+    background: #16866a;
+}
+
+.cartao-estado.atencao {
+    background: #e0aa21;
+}
+
+.cartao-estado.critico {
+    background: #c9364b;
+}
 
 section {
     margin-top: 24px;

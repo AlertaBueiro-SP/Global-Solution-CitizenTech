@@ -103,8 +103,23 @@ function mostrarPonto() {
     document.getElementById("valor-chuva").textContent =
         ponto.chuva + " mm/h";
 
+    var cartaoAgua = document.getElementById("cartao-agua");
+    var cartaoChuva = document.getElementById("cartao-chuva");
+    var indicadorAgua = document.getElementById("valor-agua");
+    var indicadorChuva = document.getElementById("valor-chuva");
+    var barraChuva = document.getElementById("preenchimento-chuva");
+    var escalaChuva = cartaoChuva.querySelector(".barra-chuva");
+    var nivelAgua = Math.max(0, Math.min(100, ponto.agua));
+    var nivelChuva = Math.max(0, Math.min(100, ponto.chuva / 2));
+
+    cartaoAgua.style.setProperty("--preenchimento", nivelAgua + "%");
+    barraChuva.style.width = nivelChuva + "%";
+    indicadorAgua.setAttribute("aria-valuenow", ponto.agua);
+    escalaChuva.setAttribute("aria-valuenow", ponto.chuva);
+
     estado.textContent = nomeEstado(classe);
     estado.className = classe;
+    document.getElementById("cartao-estado").className = "cartao-estado " + classe;
 
     agua.value = ponto.agua;
     chuva.value = ponto.chuva;

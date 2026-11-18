@@ -43,7 +43,6 @@
             <details class="info-clima">
                 <summary aria-label="Sobre a simulação do clima">i</summary>
                 <p>A proposta é consultar uma API meteorológica para atualizar o clima e a aparência do site automaticamente.
-                    Neste protótipo, essa integração não foi implementada: os botões simulam a mudança. 
                 </p>
             </details>
         </div>
@@ -173,15 +172,18 @@
                         <select id="seletor-ponto" aria-label="Selecionar boca de lobo"></select>
                         <p id="descricao-ponto" class="descricao-ponto" role="status"></p>
                         <dl class="linha">
-                            <div>
+                            <div id="cartao-agua" class="cartao-medicao cartao-medicao-agua">
                                 <dt>Nível da água</dt>
-                                <dd id="valor-agua">20 cm</dd>
+                                <dd id="valor-agua" role="progressbar" aria-label="Nível da água" aria-valuemin="0" aria-valuemax="100"
+                                    aria-valuenow="20">20 cm</dd>
                             </div>
-                            <div>
+                            <div id="cartao-chuva" class="cartao-medicao cartao-medicao-chuva">
                                 <dt>Intensidade da chuva</dt>
                                 <dd id="valor-chuva">5 mm/h</dd>
+                                <div class="barra-chuva" role="progressbar" aria-label="Intensidade da chuva" aria-valuemin="0"
+                                    aria-valuemax="200" aria-valuenow="5"><span id="preenchimento-chuva"></span></div>
                             </div>
-                            <div>
+                            <div id="cartao-estado" class="cartao-estado normal">
                                 <dt>Estado demonstrativo</dt>
                                 <dd id="estado" class="normal" role="status">Normal</dd>
                             </div>
