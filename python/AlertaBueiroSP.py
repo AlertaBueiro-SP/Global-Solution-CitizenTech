@@ -1,5 +1,6 @@
 # Menu inicial do sistema / Tela de boas-vindas
 print("Seja bem-vindo ao Sistema do Alerta Bueiro SP!")
+print("Simulação: taxa de subida constante em cm/min; não é intensidade de chuva.")
 
 quantidadeDeCalculos = 0
 
@@ -12,7 +13,7 @@ while True:
     print("2 - Ver a fórmula")
     print("3 - Mostrar tabela por minuto")
     print("4 - Mostrar quantidade de cálculos")
-    print("5 - Estimar tempo até o transbordamento")
+    print("5 - Estimar tempo até a altura limite")
     print("0 - Sair")
 
     opcao = input("Digite uma opção: ")
@@ -36,19 +37,22 @@ while True:
                         valido = False
                 if valido and tem_Digito and quantidade_de_pontos <= 1:
                     nivelInicialAgua = float(nivelInicialAgua)
+                    if nivelInicialAgua == float("inf"):
+                        print("Valor muito grande. Digite um número finito.")
+                        continue
                     break
                 else:
                     print("Entrada inválida. Por favor, digite um número válido para o nível inicial da água.")
 
             # Input do i
             while True:
-                taxaDeIntensidade = input("Digite a taxa de intensidade (em centimetros por minuto): ")
+                taxaDeSubida = input("Digite a taxa de subida da água (em centimetros por minuto): ")
 
                 valido = True
                 tem_Digito = False
                 quantidade_de_pontos = 0
                 # Validação do input para garantir que seja um número válido
-                for caractere in taxaDeIntensidade:
+                for caractere in taxaDeSubida:
                     if caractere in "0123456789":
                         tem_Digito = True
                     elif caractere == ".":
@@ -56,10 +60,13 @@ while True:
                     else:
                         valido = False
                 if valido and tem_Digito and quantidade_de_pontos <= 1:
-                    taxaDeIntensidade = float(taxaDeIntensidade)
+                    taxaDeSubida = float(taxaDeSubida)
+                    if taxaDeSubida == float("inf"):
+                        print("Valor muito grande. Digite um número finito.")
+                        continue
                     break
                 else:
-                    print("Entrada inválida. Por favor, digite um número válido para a taxa de intensidade.")
+                    print("Entrada inválida. Por favor, digite um número válido para a taxa de subida da água.")
 
             # Input do tempo para o cálculo
             while True:
@@ -77,13 +84,17 @@ while True:
                         valido = False
                 if valido and tem_Digito and quantidade_de_pontos <= 1:
                     tempoMinCalculo = float(tempoMinCalculo)
+                    if tempoMinCalculo == float("inf"):
+                        print("Valor muito grande. Digite um número finito.")
+                        continue
                     break
                 else:
                     print("Entrada inválida. Por favor, digite um número válido para o tempo.")
 
             # Cálculo do nível projetado da água após determinado tempo
-            calculoNivelProjetadoDaAgua = nivelInicialAgua + (taxaDeIntensidade * tempoMinCalculo)
+            calculoNivelProjetadoDaAgua = nivelInicialAgua + (taxaDeSubida * tempoMinCalculo)
             # Exibição do resultado do cálculo do nível projetado da água
+            print("Hipótese: a taxa de subida permanece constante no intervalo.")
             print(f"O nível projetado da água após {tempoMinCalculo} minutos será de {calculoNivelProjetadoDaAgua:.2f} centimetros.")
 
             quantidadeDeCalculos += 1
@@ -91,7 +102,7 @@ while True:
         # Case para exibir a fórmula do cálculo do nível projetado da água
         case "2":
             print("h(t) = h0 + i x t")
-            print("h0 é o nível inicial, i é a taxa de intensidade e t é o tempo.")
+            print("h0 é o nível inicial, i é a taxa de subida da água e t é o tempo.")
 
         # Case para mostrar a tabela até o minuto escolhido pelo usuário
         case "3":
@@ -107,7 +118,13 @@ while True:
                             break
 
                     if valido:
+                        if len(entradaMinutoTabela) > 4:
+                            print("Use até 1440 minutos nesta demonstração.")
+                            continue
                         minutosTabela = int(entradaMinutoTabela)
+                        if minutosTabela > 1440:
+                            print("Use até 1440 minutos nesta demonstração.")
+                            continue
                         break
 
                     print("Entrada inválida. Digite um número inteiro a partir de zero.")
@@ -116,7 +133,7 @@ while True:
                 niveisPorMinuto = []
                 # O + 1 inclui o último minuto, pois o range para antes do limite
                 for minuto in range(minutosTabela + 1):
-                    nivelNoMinuto = nivelInicialAgua + taxaDeIntensidade * minuto
+                    nivelNoMinuto = nivelInicialAgua + taxaDeSubida * minuto
                     niveisPorMinuto.append(nivelNoMinuto)
 
                 # A posição na lista corresponde ao minuto da projeção
@@ -134,7 +151,7 @@ while True:
             reutilizarDadosTransbordamento = False
             if estimativaTransbordamentoRealizada:
                 print(f"Última estimativa com nível inicial de {nivelInicialTransbordamento} cm, "
-                      f"taxa de {taxaDeIntensidadeTransbordamento} cm/min "
+                      f"taxa de {taxaDeSubidaTransbordamento} cm/min "
                       f"e altura limite de {alturaLimiteTransbordamento} cm.")
                 while True:
                     resposta = input("Deseja usar os mesmos valores? (S/N): ").upper()
@@ -161,18 +178,21 @@ while True:
 
                     if valido and tem_Digito and quantidade_de_pontos <= 1:
                         nivelInicialTransbordamento = float(nivelInicialTransbordamento)
+                        if nivelInicialTransbordamento == float("inf"):
+                            print("Valor muito grande. Digite um número finito.")
+                            continue
                         break
 
                     print("Entrada inválida. Digite zero ou um número positivo usando ponto decimal.")
 
-                # Leitura e validação do campo de taxa de intensidade
+                # Leitura e validação do campo de taxa de subida da água
                 while True:
-                    taxaDeIntensidadeTransbordamento = input("Digite a taxa de intensidade em centímetros por minuto (ex.: 2.5): ")
+                    taxaDeSubidaTransbordamento = input("Digite a taxa de subida da água em centímetros por minuto (ex.: 2.5): ")
                     valido = True
                     tem_Digito = False
                     quantidade_de_pontos = 0
 
-                    for caractere in taxaDeIntensidadeTransbordamento:
+                    for caractere in taxaDeSubidaTransbordamento:
                         if caractere in "0123456789":
                             tem_Digito = True
                         elif caractere == ".":
@@ -181,10 +201,14 @@ while True:
                             valido = False
 
                     if valido and tem_Digito and quantidade_de_pontos <= 1:
-                        taxaDeIntensidadeTransbordamento = float(taxaDeIntensidadeTransbordamento)
+                        taxaDeSubidaTransbordamento = float(taxaDeSubidaTransbordamento)
+                        if taxaDeSubidaTransbordamento == float("inf"):
+                            print("Valor muito grande. Digite um número finito.")
+                            continue
                         break
 
                     print("Entrada inválida. Digite zero ou um número positivo usando ponto decimal.")
+
 
                 # Leitura e validação do campo de altura limite
                 while True:
@@ -199,27 +223,30 @@ while True:
                         elif caractere == ".":
                             quantidade_de_pontos += 1
                         else:
-                            valido = False
+                             valido = False
 
                     if valido and tem_Digito and quantidade_de_pontos <= 1:
                         alturaLimiteTransbordamento = float(alturaLimiteTransbordamento)
+                        if alturaLimiteTransbordamento == float("inf"):
+                            print("Valor muito grande. Digite um número finito.")
+                            continue
                         break
 
                     print("Entrada inválida. Digite zero ou um número positivo usando ponto decimal.")
 
-            # Verificação do nível inicial e da taxa antes de calcular o tempo
+            # Verificação do nível inicial e da taxa de subida antes de calcular o tempo
             if nivelInicialTransbordamento == alturaLimiteTransbordamento:
                 print("No nível inicial, a água já está na altura limite.")
             elif nivelInicialTransbordamento > alturaLimiteTransbordamento:
                 print("No nível inicial, a água já ultrapassou a altura limite.")
-            elif taxaDeIntensidadeTransbordamento == 0:
-                print("Com taxa de intensidade igual a zero, a água fica abaixo da altura limite.")
+            elif taxaDeSubidaTransbordamento == 0:
+                print("Com taxa de subida da água igual a zero, a água fica abaixo da altura limite.")
             else:
                 # Na fórmula h(t) = h0 + i * t, a água chega ao limite quando h(t) = alturaLimite.
                 # Subtraímos h0 dos dois lados e dividimos por i para obter t = (alturaLimite - h0) / i.
                 tempoAteTransbordamento = (
                     alturaLimiteTransbordamento - nivelInicialTransbordamento
-                ) / taxaDeIntensidadeTransbordamento
+                ) / taxaDeSubidaTransbordamento
                 print(f"Tempo estimado desde o nível inicial até a altura limite: {tempoAteTransbordamento:.2f} minutos.")
 
             estimativaTransbordamentoRealizada = True

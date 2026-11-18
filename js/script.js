@@ -1,3 +1,4 @@
+var atualizarResumo = null;
 var atualizarProjecao = null;
 
 /* Dados inventados para estudar DOM. Não representam limites técnicos reais. */
@@ -114,10 +115,14 @@ function mostrarPonto() {
     } else if (classe === "atencao") {
         mensagem = "Nível elevado. Acompanhe as leituras simuladas.";
     } else {
-        mensagem = "Nível baixo na simulação. Não comprova eficiência da drenagem.";
+     mensagem = "Nível baixo na simulação. Não comprova eficiência da drenagem.";
     }
     document.getElementById("descricao-ponto").textContent = mensagem;
     atualizarMapa();
+
+    if (atualizarResumo !== null) {
+        atualizarResumo();
+    }
 
     if (atualizarProjecao !== null) {
         atualizarProjecao();

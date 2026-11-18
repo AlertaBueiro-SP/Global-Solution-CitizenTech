@@ -12,6 +12,8 @@
         <script src="js/script.js" defer></script>
         <script src="js/projecao.js" defer></script>
         <script src="js/grafico.js" defer></script>
+        <script src="js/resumo.js" defer></script>
+        <link rel="stylesheet" href="css/redesign.css">
     </head>
 
     <body>
@@ -33,7 +35,7 @@
             <!-- Mapa local esquemático -->
             <div class="introducao">
                 <div>
-                    <h1>Monitoramento de precipitação</h1>
+                    <h1>Uma cidade mais preparada começa com dados.</h1>
                     <p>Explore 12 bocas de lobo fictícias e simule diferentes níveis de água.</p>
                 </div>
                 <div class="hero-nota">
@@ -42,6 +44,40 @@
             </div>
 
             <!-- Contadores derivados dos mesmos dados exibidos no mapa -->
+            <div class="indicadores" aria-label="Resumo dos pontos simulados">
+                <div class="indicador">
+                    <div>
+                        <span>Pontos simulados</span>
+                        <strong id="total-pontos">12</strong>
+                        <small>Área demonstrativa</small>
+                    </div>
+                    <span class="indicador-icone" aria-hidden="true">12</span>
+                </div>
+                <div class="indicador indicador-normal">
+                    <div>
+                        <span>Situação normal</span>
+                        <strong id="total-normal">—</strong>
+                        <small>Condição atual</small>
+                    </div>
+                    <span class="indicador-icone normal" aria-hidden="true">N</span>
+                </div>
+                <div class="indicador indicador-atencao">
+                    <div>
+                        <span>Em atenção</span>
+                        <strong id="total-atencao">—</strong>
+                        <small>Acompanhar leituras</small>
+                    </div>
+                    <span class="indicador-icone atencao" aria-hidden="true">A</span>
+                </div>
+                <div class="indicador indicador-critico">
+                    <div>
+                        <span>Estado crítico</span>
+                        <strong id="total-critico">—</strong>
+                        <small>Regra demonstrativa</small>
+                    </div>
+                    <span class="indicador-icone critico" aria-hidden="true">C</span>
+                </div>
+            </div>
             <div id="monitoramento" class="dashboard">
                 <div class="mapa-coluna">
                     <div class="mapa-cabecalho">
@@ -235,8 +271,24 @@
             </section>
             <section id="tecnologias" aria-labelledby="titulo-tecnologias">
                 <h2 id="titulo-tecnologias">Tecnologias</h2>
-                <p>HTML organiza o conteúdo, CSS define a apresentação e JavaScript permite interagir com dados de demonstração.</p>
+                <p>HTML organiza o conteúdo, CSS define a apresentação e JavaScript permite interagir com dados fictícios.</p>
                 <p>Python e JavaScript projetam níveis; o circuito simulado mede, classifica e sinaliza condições locais.</p>
+                <details>
+                    <summary>Materiais e aplicações do grupo</summary>
+                    <ul>
+                        <li>
+                            <a href="python/AlertaBueiroSP.py" download>Baixar aplicação Python</a> — execução no terminal.</li>
+                        <li>
+                            <a href="materiais/relatorio-chuva-original.pdf">Relatório de chuva - Cálculo</a>
+                        </li>
+                        <li>
+                            <a href="https://www.geogebra.org/calculator/kyvpxgjy" target="_blank" rel="noopener noreferrer">GeoGebra do relatório</a>
+                        </li>
+                        <li>
+                            <a href="https://wokwi.com/projects/480870048680449025" target="_blank" rel="noopener noreferrer">Circuito original no Wokwi</a>
+                        </li>
+                    </ul>
+                </details>
             </section>
             <section id="objetivos" aria-labelledby="titulo-objetivos">
                 <h2 id="titulo-objetivos">Objetivos</h2>
