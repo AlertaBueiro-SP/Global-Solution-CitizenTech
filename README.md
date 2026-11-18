@@ -1,5 +1,5 @@
 # AlertaBueiro SP
-Repositório: https://github.com/devpgomes/Global-Solution-CitizenTech
+Repositório: (https://github.com/AlertaBueiro-SP/Global-Solution-CitizenTech)
 
 Protótipo acadêmico desenvolvido para a Global Solution 2026 — CitizenTech. A proposta é demonstrar como informações sobre o nível da água em bocas de lobo podem apoiar a compreensão de situações que exigem atenção na drenagem urbana.
 
