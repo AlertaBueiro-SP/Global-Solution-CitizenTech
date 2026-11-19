@@ -1,8 +1,37 @@
 var atualizarGrafico = null;
 
-/* Guarda os parâmetros de projecao de cada ponto somente nesta sessão*/
+// Formata números com duas casas decimais.
 function numeroFormatado(valor) {
     return valor.toFixed(2).replace(".", ",");
+}
+
+function formatarMinutos(valor) {
+    return String(valor).replace(".", ",");
+}
+
+// Converte minutos decimais em minutos e segundos.
+function formatarTempo(valor) {
+    var totalSegundos = Math.round(valor * 60);
+    var minutos = Math.floor(totalSegundos / 60);
+    var segundos = totalSegundos % 60;
+    var textoMinutos = minutos + " minutos";
+    var textoSegundos = segundos + " segundos";
+
+    if (minutos === 1) {
+        textoMinutos = "1 minuto";
+    }
+
+    if (segundos === 1) {
+        textoSegundos = "1 segundo";
+    }
+
+    if (minutos === 0) {
+        return textoSegundos;
+    } else if (segundos === 0) {
+        return textoMinutos;
+    } else {
+        return textoMinutos + " e " + textoSegundos;
+    }
 }
 
 function mostrarProjecao() {
@@ -16,20 +45,30 @@ function mostrarProjecao() {
     document.getElementById("nivel-projetado").textContent = numeroFormatado(projetado) + " cm";
     var mensagem;
     if (ponto.agua >= ponto.limite) {
-        mensagem = "Altura limite já alcançada no nível atual.";
+        mensagem = "A água já está nessa altura ou acima dela.";
     } else if (tempo === null) {
-        mensagem = "Sem subida: o modelo não alcança o limite.";
+        mensagem = "Não chega: a água não está subindo neste cenário.";
     } else {
-        mensagem = numeroFormatado(tempo) + " min, se a taxa permanecer constante.";
+         mensagem = formatarTempo(tempo) + " desde agora, mantendo essa subida.";
     }
     document.getElementById("tempo-limite").textContent = mensagem;
     if (projetado > ponto.limite) {
         document.getElementById("aviso-projecao").textContent =
-            "A projeção ultrapassa o limite.";
+            "Ao final do tempo escolhido, a água fica acima da altura de referência.";
+    } else if (projetado === ponto.limite) {
+        document.getElementById("aviso-projecao").textContent =
+            "Ao final do tempo escolhido, a água chega à altura de referência.";
     } else {
         document.getElementById("aviso-projecao").textContent =
-            "A projeção mantém a taxa constante.";
+            "Ao final do tempo escolhido, a água fica abaixo da altura de referência.";
     }
+    var unidadeTempo = " minutos";
+    if (ponto.minutos === 1) {
+        unidadeTempo = " minuto";
+    }
+    document.getElementById("resumo-projecao").textContent =
+        "Agora: " + numeroFormatado(ponto.agua) + " cm. Daqui a " +
+        formatarMinutos(ponto.minutos) + unidadeTempo + ": " + numeroFormatado(projetado) + " cm.";
     document.getElementById("ponto-projecao").textContent = ponto.id;
     if (atualizarGrafico !== null) {
         atualizarGrafico();
@@ -56,7 +95,7 @@ document.getElementById("form-projecao").addEventListener("submit", function (ev
     ponto.limite = limite;
     ponto.acumulada = acumulada;
     mostrarPonto();
-    document.getElementById("mensagem-projecao").textContent = "Projeção atualizada para " + ponto.id + ".";
+    document.getElementById("mensagem-projecao").textContent = "Estimativa de " + ponto.id + " atualizada. Confira o resultado ao lado ou abaixo.";
 });
 atualizarProjecao = mostrarProjecao;
 mostrarProjecao();

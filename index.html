@@ -206,84 +206,87 @@
                 </aside>
             </div>
             <article class="projecao caixa" aria-labelledby="titulo-projecao">
-                <h2 id="titulo-projecao">Projeção do ponto <span id="ponto-projecao">BL-01</span>
-                </h2>
-                <p>Informe a subida observada ou simulada.</p>
-                <form id="form-projecao">
-                    <label for="taxa-subida">Taxa de subida (0 a 20 cm/min)</label>
-                    <input id="taxa-subida" type="number" min="0" max="20" step="0.01" value="0" required>
-                    <label for="tempo-projecao">Tempo da projeção (0 a 60 min)</label>
-                    <input id="tempo-projecao" type="number" min="0" max="60" step="0.1" value="15" required>
-                    <label for="altura-limite">Altura limite (1 a 100 cm)</label>
-                    <input id="altura-limite" type="number" min="1" max="100" step="0.1" value="100" required>
-                    <label for="chuva-acumulada">Chuva já acumulada (0 a 500 mm)</label>
-                    <input id="chuva-acumulada" type="number" min="0" max="500" step="0.1" value="0" required>
-                    <button type="submit">Calcular projeção</button>
-                    <span id="mensagem-projecao" role="status"></span>
-                </form>
-                <dl class="linha">
-                    <div>
-                        <dt>Nível projetado</dt>
-                        <dd id="nivel-projetado"></dd>
-                    </div>
-                    <div>
-                        <dt>Tempo até a altura limite</dt>
-                        <dd id="tempo-limite"></dd>
-                    </div>
-                </dl>
-                <p id="aviso-projecao" role="status"></p>
-                <figure class="grafico">
-                    <svg id="grafico-nivel" viewbox="0 0 620 310" role="img" aria-label="Gráfico de projeção do nível da água">
-                        <title>Projeção do nível da água</title>
-                        <desc>Eixo horizontal em minutos; eixo vertical em centímetros. Valores equivalentes na tabela.</desc>
-                        <line x1="65" y1="240" x2="565" y2="240" stroke="#cbd5e1"></line>
-                        <text id="marca-nivel-0" x="58" y="244" text-anchor="end">0</text>
-                        <text id="marca-tempo-0" x="65" y="262" text-anchor="middle">0</text>
-                        <line x1="65" y1="190" x2="565" y2="190" stroke="#cbd5e1"></line>
-                        <text id="marca-nivel-1" x="58" y="194" text-anchor="end">0</text>
-                        <text id="marca-tempo-1" x="190" y="262" text-anchor="middle">0</text>
-                        <line x1="65" y1="140" x2="565" y2="140" stroke="#cbd5e1"></line>
-                        <text id="marca-nivel-2" x="58" y="144" text-anchor="end">0</text>
-                        <text id="marca-tempo-2" x="315" y="262" text-anchor="middle">0</text>
-                        <line x1="65" y1="90" x2="565" y2="90" stroke="#cbd5e1"></line>
-                        <text id="marca-nivel-3" x="58" y="94" text-anchor="end">0</text>
-                        <text id="marca-tempo-3" x="440" y="262" text-anchor="middle">0</text>
-                        <line x1="65" y1="40" x2="565" y2="40" stroke="#cbd5e1"></line>
-                        <text id="marca-nivel-4" x="58" y="44" text-anchor="end">0</text>
-                        <text id="marca-tempo-4" x="565" y="262" text-anchor="middle">0</text>
-                        <text x="65" y="20">Nível (cm)</text>
-                        <text x="290" y="290">Tempo (min)</text>
-                        <line id="linha-limite" x1="65" x2="565" y1="40" y2="40" stroke="#b42339" stroke-dasharray="6 4"></line>
-                        <line id="reta-projecao" stroke="#08788b" stroke-width="3"></line>
-                        <circle id="inicio-reta" cx="65" r="4" fill="#08788b"></circle>
-                    </svg>
-                    <figcaption>Azul: projeção linear. Vermelho tracejado: altura limite.</figcaption>
-                </figure>
-                <details>
-                    <summary>Ver tabela por minuto</summary>
-                    <div class="tabela-rolagem">
-                        <table>
-                            <caption>Nível projetado do ponto selecionado</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Tempo (min)</th>
-                                    <th scope="col">Nível (cm)</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabela-niveis"></tbody>
-                        </table>
-                    </div>
-                </details>
-            </article>
-            <div class="resumo">
-                <div>
-                    <span class="icone">≋</span>
-                    <div>
-                        <strong>Você controla o cenário</strong>
-                        <span>Altere água e chuva e observe o estado.</span>
+                <h2 id="titulo-projecao">Como a água pode subir no ponto <span id="ponto-projecao">BL-01</span>?</h2>
+                <p>Escolha um ponto no mapa. Depois, siga os passos para testar uma situação fictícia.</p>
+                <div class="conteudo-projecao">
+                    <form id="form-projecao">
+                        <h3>1. Preencha a simulação</h3>
+                        <label for="taxa-subida">Quanto a água sobe por minuto?</label>
+                        <input id="taxa-subida" type="number" min="0" max="20" step="0.01" value="0" aria-describedby="ajuda-subida" required>
+                        <small id="ajuda-subida">De 0 a 20 centímetros por minuto. Exemplo: 2 significa subir 2 cm a cada minuto.</small>
+                        <label for="tempo-projecao">Por quantos minutos deseja simular?</label>
+                        <input id="tempo-projecao" type="number" min="0" max="60" step="0.1" value="15" aria-describedby="ajuda-tempo" required>
+                        <small id="ajuda-tempo">De 0 a 60 minutos. Exemplo: 15 mostra a estimativa para daqui a 15 minutos.</small>
+                        <label for="altura-limite">Qual altura deseja acompanhar?</label>
+                        <input id="altura-limite" type="number" min="1" max="100" step="0.1" value="100" aria-describedby="ajuda-limite" required>
+                        <small id="ajuda-limite">De 1 a 100 cm. É uma referência escolhida por você, não um limite real de segurança.</small>
+                        <label for="chuva-acumulada">Quanto já choveu neste cenário?</label>
+                        <input id="chuva-acumulada" type="number" min="0" max="500" step="0.1" value="0" aria-describedby="ajuda-chuva" required>
+                        <small id="ajuda-chuva">De 0 a 500 milímetros. Este dado participa dos alertas do mapa, não da conta da subida.</small>
+                        <button type="submit">Ver estimativa</button>
+                        <span id="mensagem-projecao" role="status"></span>
+                    </form>
+                    <div class="resultado-projecao">
+                        <h3>2. Entenda o resultado</h3>
+                        <p id="resumo-projecao"></p>
+                        <dl class="linha">
+                            <div>
+                                <dt>Altura da água ao final</dt>
+                                <dd id="nivel-projetado"></dd>
+                            </div>
+                            <div>
+                                <dt>Quando chega à altura escolhida?</dt>
+                                <dd id="tempo-limite"></dd>
+                            </div>
+                        </dl>
+                        <p id="aviso-projecao"></p>
+                        <p>A conta supõe uma subida constante. É uma simulação, não uma previsão real de alagamento.</p>
+                        <figure class="grafico">
+                            <svg id="grafico-nivel" viewBox="0 0 620 310" role="img" aria-label="Gráfico da estimativa do nível da água">
+                                <title>Como o nível pode mudar</title>
+                                <desc>Eixo horizontal em minutos; eixo vertical em centímetros. Valores equivalentes na tabela.</desc>
+                                <line x1="65" y1="240" x2="565" y2="240" stroke="#cbd5e1"></line>
+                                <text id="marca-nivel-0" x="58" y="244" text-anchor="end">0</text>
+                                <text id="marca-tempo-0" x="65" y="262" text-anchor="middle">0</text>
+                                <line x1="65" y1="190" x2="565" y2="190" stroke="#cbd5e1"></line>
+                                <text id="marca-nivel-1" x="58" y="194" text-anchor="end">0</text>
+                                <text id="marca-tempo-1" x="190" y="262" text-anchor="middle">0</text>
+                                <line x1="65" y1="140" x2="565" y2="140" stroke="#cbd5e1"></line>
+                                <text id="marca-nivel-2" x="58" y="144" text-anchor="end">0</text>
+                                <text id="marca-tempo-2" x="315" y="262" text-anchor="middle">0</text>
+                                <line x1="65" y1="90" x2="565" y2="90" stroke="#cbd5e1"></line>
+                                <text id="marca-nivel-3" x="58" y="94" text-anchor="end">0</text>
+                                <text id="marca-tempo-3" x="440" y="262" text-anchor="middle">0</text>
+                                <line x1="65" y1="40" x2="565" y2="40" stroke="#cbd5e1"></line>
+                                <text id="marca-nivel-4" x="58" y="44" text-anchor="end">0</text>
+                                <text id="marca-tempo-4" x="565" y="262" text-anchor="middle">0</text>
+                                <text x="65" y="20">Nível (cm)</text>
+                                <text x="290" y="290">Tempo (min)</text>
+                                <line id="linha-limite" x1="65" x2="565" y1="40" y2="40" stroke="#b42339" stroke-dasharray="6 4"></line>
+                                <line id="reta-projecao" stroke="#08788b" stroke-width="3"></line>
+                                <circle id="inicio-reta" cx="65" r="4" fill="#08788b"></circle>
+                            </svg>
+                            <figcaption>Linha contínua: altura estimada. Linha tracejada: referência escolhida. Embaixo: minutos; à esquerda: centímetros.</figcaption>
+                        </figure>
+                        <details>
+                            <summary>Prefere números? Abra a tabela por minuto</summary>
+                            <div class="tabela-rolagem">
+                                <table>
+                                    <caption>Altura estimada da água ao longo do tempo</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Tempo (minutos)</th>
+                                            <th scope="col">Altura da água (cm)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabela-niveis"></tbody>
+                                </table>
+                            </div>
+                        </details>
                     </div>
                 </div>
-            </div>
+            </article>
+
             <section id="problema" aria-labelledby="titulo-problema">
                 <h2 id="titulo-problema">Problema</h2>
                 <p>O acúmulo de água nas ruas dificulta deslocamentos e afeta moradores de regiões sujeitas a alagamentos.</p>
